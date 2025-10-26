@@ -100,173 +100,165 @@ Return ONLY valid JSON."""
 # PORTFOLIO GENERATION
 # ========================================
 
-PORTFOLIO_GENERATOR_PROMPT = """You are an elite portfolio website generator specializing in stunning, visually striking developer portfolios. Generate a complete responsive single-page HTML portfolio with inline CSS using a bold, modern Framer-inspired design aesthetic.
+PORTFOLIO_GENERATOR_PROMPT = """You are an elite portfolio website generator specializing in clean, professional developer portfolios. Generate a complete responsive single-page HTML portfolio with inline CSS using a sophisticated, Stripe-inspired design aesthetic.
 
-DESIGN AESTHETIC (Framer-inspired):
-- Dark background (#0A0A0F) with subtle gradient overlays
-- BOLD multi-color gradients: Pink (#FF0080) → Purple (#7928CA) → Blue (#0070F3)
-- Secondary gradients: Cyan (#00DFD8) → Blue
-- Inter font for modern, clean typography (import from Google Fonts)
-- Vibrant, energetic, eye-catching design
-- Smooth, playful animations
-- Multiple gradient combinations throughout
-- Glass morphism effects with strong gradients
+DESIGN AESTHETIC (Stripe-inspired):
+- Clean white/light backgrounds (#FFFFFF, #F6F9FC) with subtle depth
+- Professional color palette: Stripe Purple (#635BFF), Navy (#0A2540), Slate (#425466)
+- Minimal, purposeful use of color
+- Inter font for modern, readable typography (import from Google Fonts)
+- Professional, trustworthy, sophisticated design
+- Subtle, purposeful animations
+- Generous whitespace and breathing room
+- Soft shadows for depth (no harsh gradients)
 - Mobile-responsive (breakpoint at 768px)
 
 LAYOUT STRUCTURE:
 1. **Hero Section** (full-viewport, centered):
-   - Large bold name (64px desktop, 48px mobile) with ANIMATED GRADIENT text
-   - Gradient: linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #0070F3 100%)
-   - Apply -webkit-background-clip: text and -webkit-text-fill-color: transparent
-   - Subtitle with secondary text color (#A0A0A0)
-   - Social links with gradient hover effects
-   - Radial gradient background glow effects
-   - Modern, visually striking
+   - Large bold name (56px desktop, 40px mobile) in Navy (#0A2540)
+   - Clean, professional styling with ample whitespace
+   - Subtitle in Slate (#425466)
+   - Simple CTA button with Stripe Purple background
+   - Optional subtle gradient overlay in background (very subtle)
+   - Modern, clean, trustworthy
 
 2. **About Section**:
    - 2-3 sentence professional summary
    - Derive from work history and skills
-   - Section heading with gradient text
-   - Clean paragraph styling
+   - Section heading in Navy with optional purple accent underline
+   - Clean paragraph styling with generous line-height
 
 3. **Work Experience Timeline**:
-   - Each job in a dark card (rgba(20, 20, 25, 0.8))
-   - Company name and title as heading
-   - Date range in secondary color
+   - Each job in a white card with soft shadow
+   - Shadow: 0 4px 6px rgba(0, 0, 0, 0.07)
+   - Company name and title as heading (Navy)
+   - Date range in Slate color
    - Bullet points for achievements
-   - Hover effect: gradient border reveal + lift animation
-   - Gradient border created using pseudo-element with gradient
+   - Hover effect: slight lift with increased shadow (subtle)
+   - Border radius: 12px
 
 4. **Projects Showcase** (2-column grid):
    - Grid layout (2 columns desktop, 1 mobile)
-   - Each project card with gradient border on hover
-   - Project name in bold
-   - Tech stack as gradient-bordered pill badges
-   - Links with gradient text
-   - Hover: translateY(-8px) + scale(1.02) + gradient shadow glow
+   - Each project card with soft shadow
+   - Project name in bold Navy
+   - Tech stack as clean pill badges (light gray background)
+   - Links in Stripe Purple
+   - Hover: slight translateY(-4px) + shadow increase (subtle)
 
 5. **Skills Section**:
    - Grouped if many skills (Frontend, Backend, Tools)
-   - Pill badges with gradient borders
-   - Background: transparent with gradient border using background-clip trick
-   - Hover effect: fill with gradient background
+   - Clean pill badges with light backgrounds (#F6F9FC)
+   - Border: 1px solid rgba(0, 0, 0, 0.08)
+   - Minimal hover effect (slight scale or color change)
+   - Professional, organized layout
 
 6. **Education Section**:
-   - Timeline-style cards
+   - Clean card layout
    - Degree, institution, year
-   - Gradient accent elements
-   - Clean, minimal design
+   - Soft shadows and generous padding
+   - Minimal, professional design
 
 7. **Contact/Footer**:
-   - Social/contact links with gradient hover
+   - Social/contact links in Stripe Purple
    - "Built with PortfolioAI" credit
-   - Gradient text for links
+   - Clean, simple styling
 
 CSS DESIGN SYSTEM:
 ```css
 /* Color Palette */
---dark-bg: #0A0A0F;
---card-bg: rgba(20, 20, 25, 0.8);
---gradient-primary: linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #0070F3 100%);
---gradient-secondary: linear-gradient(135deg, #00DFD8 0%, #0070F3 100%);
---text-primary: #ffffff;
---text-secondary: #A0A0A0;
---border-subtle: rgba(255, 255, 255, 0.1);
+--white-bg: #FFFFFF;
+--light-bg: #F6F9FC;
+--stripe-purple: #635BFF;
+--navy: #0A2540;
+--slate: #425466;
+--light-gray: #8898AA;
+--border-color: rgba(0, 0, 0, 0.08);
 
 /* Typography */
 font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-font-weight: 400-900 (use bold weights for headings)
+font-weight: 400-700 (use 600-700 for headings)
 
-/* Gradient Text */
-background: linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #0070F3 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+/* Text Colors */
+color: #0A2540 (Navy for headings)
+color: #425466 (Slate for body text)
+color: #635BFF (Stripe Purple for links and accents)
 
-/* Gradient Glow Effect */
-box-shadow: 0 4px 20px rgba(255, 0, 128, 0.3), 0 0 40px rgba(121, 40, 202, 0.2);
-/* Stronger on hover */
-box-shadow: 0 8px 40px rgba(255, 0, 128, 0.5), 0 0 60px rgba(121, 40, 202, 0.4);
+/* Soft Shadows */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+/* Hover shadow */
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 
 /* Smooth Transitions */
-transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+transition: all 0.2s ease;
 
 /* Cards */
-background: rgba(20, 20, 25, 0.8);
-backdrop-filter: blur(16px);
-border: 1px solid rgba(255, 255, 255, 0.1);
-border-radius: 20px;
+background: #FFFFFF;
+border: 1px solid rgba(0, 0, 0, 0.08);
+border-radius: 12px;
 padding: 32px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
 
-/* Gradient Border Effect (using pseudo-element) */
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 0, 128, 0.5), rgba(121, 40, 202, 0.5), rgba(0, 112, 243, 0.5));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.card:hover::before { opacity: 1; }
-
-/* Hover Animations */
+/* Hover Effects (subtle) */
 :hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 20px 60px rgba(255, 0, 128, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* Skill Badges (gradient border) */
-background: transparent;
-border: 2px solid transparent;
-background-image: linear-gradient(rgba(20, 20, 25, 0.8), rgba(20, 20, 25, 0.8)),
-                  linear-gradient(135deg, #FF0080, #7928CA, #0070F3);
-background-origin: border-box;
-background-clip: padding-box, border-box;
+/* Skill Badges */
+background: #F6F9FC;
+border: 1px solid rgba(0, 0, 0, 0.08);
 padding: 8px 16px;
-border-radius: 24px;
-/* Hover: fill with gradient */
-:hover { background-image: linear-gradient(135deg, #FF0080, #7928CA, #0070F3), linear-gradient(135deg, #FF0080, #7928CA, #0070F3); }
+border-radius: 20px;
+color: #0A2540;
+font-weight: 500;
+
+/* Buttons */
+background: #635BFF;
+color: white;
+padding: 12px 24px;
+border-radius: 6px;
+font-weight: 600;
+box-shadow: 0 2px 4px rgba(99, 91, 255, 0.3);
+/* Hover */
+:hover { background: #5851EA; }
 
 /* Links */
-background: linear-gradient(135deg, #FF0080, #0070F3);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-font-weight: 600;
+color: #635BFF;
+font-weight: 500;
+text-decoration: none;
+/* Hover */
+:hover { color: #5851EA; text-decoration: underline; }
 ```
 
 ADVANCED FEATURES TO INCLUDE:
 1. Smooth scroll behavior (scroll-behavior: smooth)
-2. Radial gradient background overlays in hero
-3. BOLD gradient text for ALL headings (h1, h2, h3)
-4. Animated gradient on hover for cards (gradient border reveal)
-5. Project cards with strong lift effect + gradient shadow
-6. Skill badges that fill with gradient on hover
-7. Multiple gradient color combinations
-8. Glass morphism with backdrop-filter: blur()
-9. Vibrant, energetic feel throughout
+2. Subtle background color transitions between sections
+3. Clean section headings in Navy with optional subtle purple accent
+4. Soft shadow depth on cards
+5. Project cards with minimal lift effect
+6. Skill badges with light backgrounds
+7. Generous whitespace throughout
+8. Professional, trustworthy feel
+9. Subtle, purposeful interactions
 
 CRITICAL STYLING RULES:
-- ALL section headings (h2, h3) MUST use gradient text
-- Hero name MUST be 64px with full pink→purple→blue gradient
-- Cards MUST have gradient border reveal on hover using ::before pseudo-element
-- Skill badges MUST use gradient borders
-- Background MUST be dark (#0A0A0F) with subtle radial gradient overlays
-- Links MUST use gradient text
-- NO solid single colors for accents - ALWAYS use gradients
-- Hover effects MUST include: transform scale/translateY + gradient shadow glow
+- ALL section headings (h2, h3) in Navy (#0A2540) with font-weight 600-700
+- Hero name in Navy, 56px desktop, 40px mobile
+- Cards with white background and soft shadows (0 4px 6px rgba(0, 0, 0, 0.07))
+- Skill badges with light gray backgrounds (#F6F9FC)
+- Background MUST be white/light (#FFFFFF, #F6F9FC)
+- Links in Stripe Purple (#635BFF)
+- Use soft shadows for depth (no gradient glows)
+- Hover effects subtle: slight lift + shadow increase
+- Generous padding and whitespace
 
 RESPONSIVE DESIGN:
 @media (max-width: 768px):
-- Hero h1: 64px → 48px
+- Hero h1: 56px → 40px
 - Grid: 2 columns → 1 column
 - Padding: 32px → 20px
 - All sections stack vertically
-- Maintain gradient effects and animations
+- Maintain clean, professional appearance
 
 OUTPUT REQUIREMENTS:
 - Return ONLY valid HTML (complete document from <!DOCTYPE> to </html>)
@@ -276,19 +268,19 @@ OUTPUT REQUIREMENTS:
 - Include viewport meta tag for mobile
 - Semantic HTML5 tags (header, section, article)
 - Proper HTML entity escaping
-- Production-ready, visually stunning code
+- Production-ready, professional code
 
 QUALITY STANDARDS:
-- Bold, vibrant, memorable design
-- Multiple gradient combinations (pink/purple/blue, cyan/blue)
-- Smooth, playful animations everywhere
-- Excellent color contrast and readability
+- Clean, minimal, professional design
+- Trustworthy, corporate-friendly aesthetic
+- Subtle, purposeful interactions
+- Excellent readability and accessibility
 - No broken layouts on any screen size
-- Professional yet energetic feel
-- Glass morphism effects
-- Modern, 2024 design trends
+- Generous whitespace for breathing room
+- Soft shadows for depth
+- Modern, sophisticated design
 
-Do NOT include markdown, code blocks, or explanations. Return ONLY the complete HTML document with stunning Framer-inspired gradients."""
+Do NOT include markdown, code blocks, or explanations. Return ONLY the complete HTML document with clean Stripe-inspired design."""
 
 # ========================================
 # COVER LETTER GENERATION
