@@ -119,59 +119,55 @@ DESIGN AESTHETIC (Ultra-Modern & Visually Stunning):
 This design is VISUALLY STUNNING and PROFESSIONAL - designed to impress and stand out while maintaining credibility.
 
 LAYOUT STRUCTURE:
-1. **Hero Section** (full-viewport, cinematic):
-   - STUNNING gradient mesh background with animated floating orbs
-   - Large bold name (64px desktop, 44px mobile) in WHITE with text shadow and glow
-   - Gradient text effect on name (optional)
-   - Subtitle with modern typography and letter-spacing
-   - Glossy CTA button with glow effect and 3D appearance
-   - Multiple animated gradient orbs floating in background
-   - Smooth entrance animations
+1. **Hero Section** (full-viewport, centered):
+   - Cinematic gradient background with animated floating orbs
+   - Large bold name (64px desktop, 44px mobile) in WHITE with text shadow
+   - Professional title/role as subtitle
+   - Glossy "Get in Touch" CTA button
+   - Clean, impactful presentation
 
 2. **About Section**:
-   - 2-3 sentence professional summary
-   - Large, readable text with beautiful typography
-   - Section heading with animated gradient underline
-   - Subtle background pattern or gradient
+   - Write a compelling 2-3 sentence professional summary
+   - Derive from user's work history, skills, and experience
+   - Focus on what they do, their expertise, and their value proposition
+   - Keep it conversational and authentic
+   - Section heading with gradient underline
 
-3. **Work Experience Cards**:
-   - 3D cards with layered shadows (elevation effect)
-   - Gradient left border that expands on hover
-   - Hover: lift effect with perspective transform
-   - Company name and title with icon decorations
-   - Date range with subtle styling
-   - Bullet points with custom gradient markers
-   - Smooth hover state with scale and shadow
+3. **Work Experience Timeline**:
+   - List each job in chronological order (most recent first)
+   - Each job in a card with gradient left border
+   - **Job Title** at **Company Name** as heading
+   - Date range (e.g., "Jan 2022 - Present") clearly visible
+   - List 3-5 bullet points of key achievements and responsibilities
+   - Use action verbs (Led, Built, Implemented, Increased, etc.)
+   - Quantify achievements where possible (e.g., "Increased performance by 40%")
 
-4. **Projects Showcase** (responsive grid):
-   - Grid layout with stunning project cards
-   - Each card has depth with multiple shadow layers
-   - Project name in bold with gradient on hover
-   - Gradient overlay on hover
-   - Tech stack as colorful gradient pills
-   - Links with underline animations
-   - Image placeholders with gradient backgrounds
-   - Hover: dramatic lift with glow effect
+4. **Projects Showcase** (2-column grid):
+   - Grid layout (2 columns desktop, 1 column mobile)
+   - Each project in a card with stunning visual effects
+   - **Project Name** as bold heading
+   - 2-3 sentence description of what the project does
+   - Tech stack listed below (e.g., "Technologies: React, Node.js, MongoDB")
+   - Include links if available (GitHub, demo, etc.)
+   - Show real technologies used, not generic placeholders
 
 5. **Skills Section**:
-   - Eye-catching gradient background
-   - 3D glossy skill badges with multiple gradient options
-   - Hover: bounce animation with scale and glow
-   - Rotating gradient colors (purple, pink, cyan, orange)
-   - Professional yet visually impressive
-   - Organized in flowing layout
+   - Group skills logically if there are many (Frontend, Backend, Tools, etc.)
+   - Display as colorful gradient pill badges (rotating 4 colors)
+   - List actual skills from user's profile
+   - Professional organization with visual impact
 
 6. **Education Section**:
-   - Elegant cards with gradient accents
-   - Degree, institution, year with icons
-   - Sophisticated shadows and hover effects
-   - Clean, impressive design
+   - List each degree/certification
+   - **Degree Name** as heading (e.g., "B.S. Computer Science")
+   - Institution name and graduation year
+   - Clean card layout with gradient accents
 
 7. **Contact/Footer**:
-   - Multi-stop gradient background (dark and sophisticated)
+   - Display email, phone, LinkedIn with proper mailto/tel links
    - Social links with hover glow effects
-   - "Built with PortfolioAI" credit with gradient text
-   - Modern, polished styling
+   - "Built with PortfolioAI" credit
+   - Dark gradient background for contrast
 
 COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
 
@@ -754,26 +750,29 @@ HTML STRUCTURE TEMPLATE - FOLLOW THIS EXACT PATTERN:
 ```
 
 CRITICAL INSTRUCTIONS:
-1. Use the COMPLETE CSS provided above - copy it exactly into the <style> tag
-2. Replace ALL [bracketed placeholders] with actual user data
-3. Use proper semantic HTML5 structure
-4. NO broken CSS syntax - use proper CSS variables and selectors
-5. Return ONLY the HTML - no markdown, no explanations, no code blocks
-6. Ensure all sections use proper class names (.container, .card, .btn, etc.)
-7. Make sure the CSS is inside <style> tags, not as comments
-8. Test that colors use CSS variables (var(--navy), var(--stripe-purple), etc.)
+1. **USE THE COMPLETE CSS** - Copy it exactly into the <style> tag, no modifications
+2. **WRITE REAL CONTENT** - Replace ALL [bracketed placeholders] with actual user data
+3. **PROFESSIONAL ABOUT SECTION** - Write a compelling 2-3 sentence summary from user's experience
+4. **DETAILED WORK HISTORY** - Include all jobs with 3-5 specific bullet points each
+5. **QUANTIFY ACHIEVEMENTS** - Use metrics where possible (e.g., "Improved speed by 40%")
+6. **ACCURATE TECH STACKS** - List real technologies from user's projects, not generic ones
+7. **PROPER LINKS** - Include mailto: for email, tel: for phone, full URLs for LinkedIn/GitHub
+8. **USE ACTION VERBS** - Led, Built, Developed, Implemented, Increased, Optimized, etc.
+9. **SEMANTIC HTML5** - Proper section tags, headings hierarchy, accessibility
+10. **RETURN ONLY HTML** - No markdown code blocks, no explanations, just pure HTML
 
 QUALITY STANDARDS:
 ✅ **VISUALLY STUNNING** - Cinematic hero, 3D effects, impressive animations
-✅ **PROFESSIONAL** - Maintains credibility with sophisticated design
+✅ **PROFESSIONAL CONTENT** - Well-written, compelling, achievement-focused
+✅ **ACCURATE DATA** - All information from user's actual profile, no placeholders
 ✅ **LAYERED DEPTH** - Multiple shadow layers, gradient overlays, blur effects
 ✅ **SMOOTH ANIMATIONS** - Cubic-bezier easing, fadeInUp, floating orbs
 ✅ **4-COLOR GRADIENT SYSTEM** - Purple, pink, cyan, orange rotating on badges
-✅ **RESPONSIVE** - Perfect on all devices with maintained effects
+✅ **QUANTIFIED ACHIEVEMENTS** - Numbers, percentages, specific impacts
 ✅ **PROPER TYPOGRAPHY** - Inter font, proper weights (400-800), letter-spacing
 ✅ **WORKING HOVER EFFECTS** - Dramatic transforms, glows, and scale effects
 ✅ **NO PERFORMANCE ISSUES** - No backdrop-filter, optimized animations
-✅ **PRODUCTION-READY** - Valid CSS, proper selectors, no syntax errors
+✅ **PRODUCTION-READY** - Valid CSS, proper selectors, compelling content
 
 Generate the complete HTML portfolio now using the profile data provided below:"""
 
