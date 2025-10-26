@@ -1720,14 +1720,20 @@ def qa_flow_page():
             progress_bar.progress(60)
 
             # Generate resume
-            resume_pdf = resume_gen.generate_pdf(profile_data)
-            st.session_state.resume_pdf = resume_pdf
+            success_pdf, resume_pdf, error_pdf = resume_gen.generate_pdf(profile_data)
+            if success_pdf:
+                st.session_state.resume_pdf = resume_pdf
+            else:
+                st.error(f"Failed to generate PDF: {error_pdf}")
 
             progress_text.text("📝 Creating resume DOCX...")
             progress_bar.progress(80)
 
-            resume_docx = resume_gen.generate_docx(profile_data)
-            st.session_state.resume_docx = resume_docx
+            success_docx, resume_docx, error_docx = resume_gen.generate_docx(profile_data)
+            if success_docx:
+                st.session_state.resume_docx = resume_docx
+            else:
+                st.error(f"Failed to generate DOCX: {error_docx}")
 
             # Save to database if logged in
             if st.session_state.user_id and not st.session_state.demo_mode:
