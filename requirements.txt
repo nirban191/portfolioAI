@@ -2,7 +2,8 @@
 streamlit==1.31.0
 
 # Database & Auth
-supabase>=2.22.0
+supabase==2.3.4
+httpx==0.24.1
 
 # AI/LLM
 groq==0.4.2

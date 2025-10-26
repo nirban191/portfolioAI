@@ -47,7 +47,13 @@ try:
     groq_client = get_groq_client()
 except Exception as e:
     st.error(f"⚠️ Failed to initialize services: {e}")
-    st.info("💡 Make sure you have set up .env file with Supabase and Groq credentials")
+    st.info("💡 **For Local Development:** Make sure you have set up .env file with Supabase and Groq credentials")
+    st.info("💡 **For Hugging Face Spaces:** Add secrets in Settings → Repository secrets:")
+    st.code("""
+GROQ_API_KEY=your_groq_api_key
+SUPABASE_URL=your_supabase_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+    """)
     st.stop()
 
 # Initialize session state
