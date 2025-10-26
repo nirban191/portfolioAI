@@ -100,18 +100,16 @@ Return ONLY valid JSON."""
 # PORTFOLIO GENERATION
 # ========================================
 
-PORTFOLIO_GENERATOR_PROMPT = """You are an elite portfolio website generator specializing in clean, professional developer portfolios. Generate a complete responsive single-page HTML portfolio with inline CSS using a sophisticated, Stripe-inspired design aesthetic.
+PORTFOLIO_GENERATOR_PROMPT = """You are an elite portfolio website generator specializing in clean, professional developer portfolios inspired by Stripe's design. Generate a complete, responsive, single-page HTML portfolio with inline CSS.
 
 DESIGN AESTHETIC (Stripe-inspired):
-- Clean white/light backgrounds (#FFFFFF, #F6F9FC) with subtle depth
+- Clean white/light backgrounds with subtle depth
 - Professional color palette: Stripe Purple (#635BFF), Navy (#0A2540), Slate (#425466)
-- Minimal, purposeful use of color
-- Inter font for modern, readable typography (import from Google Fonts)
-- Professional, trustworthy, sophisticated design
-- Subtle, purposeful animations
+- Inter font (Google Fonts) for modern typography
 - Generous whitespace and breathing room
-- Soft shadows for depth (no harsh gradients)
-- Mobile-responsive (breakpoint at 768px)
+- Soft shadows for depth
+- Subtle hover animations
+- Mobile-responsive design
 
 LAYOUT STRUCTURE:
 1. **Hero Section** (full-viewport, centered):
@@ -163,71 +161,196 @@ LAYOUT STRUCTURE:
    - "Built with PortfolioAI" credit
    - Clean, simple styling
 
-CSS DESIGN SYSTEM:
-```css
-/* Color Palette */
---white-bg: #FFFFFF;
---light-bg: #F6F9FC;
---stripe-purple: #635BFF;
---navy: #0A2540;
---slate: #425466;
---light-gray: #8898AA;
---border-color: rgba(0, 0, 0, 0.08);
+COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
 
-/* Typography */
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-font-weight: 400-700 (use 600-700 for headings)
+```html
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Text Colors */
-color: #0A2540 (Navy for headings)
-color: #425466 (Slate for body text)
-color: #635BFF (Stripe Purple for links and accents)
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-/* Soft Shadows */
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-/* Hover shadow */
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    :root {
+        --white-bg: #FFFFFF;
+        --light-bg: #F6F9FC;
+        --stripe-purple: #635BFF;
+        --navy: #0A2540;
+        --slate: #425466;
+        --light-gray: #8898AA;
+        --border: rgba(0, 0, 0, 0.08);
+    }
 
-/* Smooth Transitions */
-transition: all 0.2s ease;
+    html {
+        scroll-behavior: smooth;
+    }
 
-/* Cards */
-background: #FFFFFF;
-border: 1px solid rgba(0, 0, 0, 0.08);
-border-radius: 12px;
-padding: 32px;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--slate);
+        background: var(--white-bg);
+        line-height: 1.6;
+    }
 
-/* Hover Effects (subtle) */
-:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-}
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
 
-/* Skill Badges */
-background: #F6F9FC;
-border: 1px solid rgba(0, 0, 0, 0.08);
-padding: 8px 16px;
-border-radius: 20px;
-color: #0A2540;
-font-weight: 500;
+    section {
+        padding: 80px 0;
+    }
 
-/* Buttons */
-background: #635BFF;
-color: white;
-padding: 12px 24px;
-border-radius: 6px;
-font-weight: 600;
-box-shadow: 0 2px 4px rgba(99, 91, 255, 0.3);
-/* Hover */
-:hover { background: #5851EA; }
+    h1, h2, h3 {
+        color: var(--navy);
+        font-weight: 700;
+        line-height: 1.2;
+    }
 
-/* Links */
-color: #635BFF;
-font-weight: 500;
-text-decoration: none;
-/* Hover */
-:hover { color: #5851EA; text-decoration: underline; }
+    h1 {
+        font-size: 56px;
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-size: 36px;
+        margin-bottom: 48px;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    a {
+        color: var(--stripe-purple);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    a:hover {
+        color: #5851EA;
+    }
+
+    .btn {
+        display: inline-block;
+        background: var(--stripe-purple);
+        color: white;
+        padding: 12px 32px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 4px rgba(99, 91, 255, 0.3);
+    }
+
+    .btn:hover {
+        background: #5851EA;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(99, 91, 255, 0.4);
+        color: white;
+    }
+
+    .hero {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(180deg, var(--light-bg) 0%, var(--white-bg) 100%);
+    }
+
+    .hero p {
+        font-size: 20px;
+        color: var(--slate);
+        margin-bottom: 32px;
+    }
+
+    .card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        transition: all 0.2s ease;
+        margin-bottom: 24px;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-date {
+        color: var(--light-gray);
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .card ul {
+        margin: 16px 0;
+        padding-left: 20px;
+    }
+
+    .card li {
+        margin: 8px 0;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+    }
+
+    .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .skill-badge {
+        background: var(--light-bg);
+        border: 1px solid var(--border);
+        padding: 8px 16px;
+        border-radius: 20px;
+        color: var(--navy);
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    .skill-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .tech-list {
+        color: var(--light-gray);
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 48px 0;
+        background: var(--light-bg);
+        color: var(--slate);
+    }
+
+    @media (max-width: 768px) {
+        h1 { font-size: 40px; }
+        h2 { font-size: 28px; }
+        section { padding: 48px 0; }
+        .card { padding: 24px; }
+        .projects-grid { grid-template-columns: 1fr; }
+    }
+</style>
 ```
 
 ADVANCED FEATURES TO INCLUDE:
@@ -260,27 +383,127 @@ RESPONSIVE DESIGN:
 - All sections stack vertically
 - Maintain clean, professional appearance
 
-OUTPUT REQUIREMENTS:
-- Return ONLY valid HTML (complete document from <!DOCTYPE> to </html>)
-- All CSS inline in <style> tag (include @import for Inter font)
-- NO external JavaScript or libraries
-- NO placeholder text - use ONLY provided data
-- Include viewport meta tag for mobile
-- Semantic HTML5 tags (header, section, article)
-- Proper HTML entity escaping
-- Production-ready, professional code
+HTML STRUCTURE TEMPLATE - FOLLOW THIS EXACT PATTERN:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[User's Name] - Portfolio</title>
+    <style>
+        /* PASTE THE COMPLETE CSS FROM ABOVE HERE */
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>[User's Name]</h1>
+            <p>[Job Title/Role]</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>[Professional summary derived from work history]</p>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Work Experience</h2>
+            <!-- For each job, create a card -->
+            <div class="card">
+                <h3>[Job Title] at [Company]</h3>
+                <div class="card-date">[Start Date] – [End Date]</div>
+                <ul>
+                    <li>[Achievement/Responsibility]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <!-- For each project -->
+                <div class="card">
+                    <h3>[Project Name]</h3>
+                    <p>[Project Description]</p>
+                    <div class="tech-list">Technologies: [Tech Stack]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <!-- For each skill -->
+                <span class="skill-badge">[Skill Name]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <!-- For each degree -->
+            <div class="card">
+                <h3>[Degree Name]</h3>
+                <div class="card-date">[Institution] • [Year]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:[email]">[email]</a></p>
+            <p>Phone: [phone]</p>
+            <p>LinkedIn: <a href="[linkedin]" target="_blank">[linkedin]</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Built with PortfolioAI • © [Year] [Name]</p>
+    </footer>
+</body>
+</html>
+```
+
+CRITICAL INSTRUCTIONS:
+1. Use the COMPLETE CSS provided above - copy it exactly into the <style> tag
+2. Replace ALL [bracketed placeholders] with actual user data
+3. Use proper semantic HTML5 structure
+4. NO broken CSS syntax - use proper CSS variables and selectors
+5. Return ONLY the HTML - no markdown, no explanations, no code blocks
+6. Ensure all sections use proper class names (.container, .card, .btn, etc.)
+7. Make sure the CSS is inside <style> tags, not as comments
+8. Test that colors use CSS variables (var(--navy), var(--stripe-purple), etc.)
 
 QUALITY STANDARDS:
-- Clean, minimal, professional design
-- Trustworthy, corporate-friendly aesthetic
-- Subtle, purposeful interactions
-- Excellent readability and accessibility
-- No broken layouts on any screen size
-- Generous whitespace for breathing room
-- Soft shadows for depth
-- Modern, sophisticated design
+✅ Clean, professional Stripe-inspired design
+✅ Fully responsive (mobile and desktop)
+✅ Proper spacing and typography
+✅ Working hover effects
+✅ No layout bugs
+✅ Production-ready code
 
-Do NOT include markdown, code blocks, or explanations. Return ONLY the complete HTML document with clean Stripe-inspired design."""
+Generate the complete HTML portfolio now using the profile data provided below:"""
 
 # ========================================
 # COVER LETTER GENERATION
