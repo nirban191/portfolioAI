@@ -100,16 +100,21 @@ Return ONLY valid JSON."""
 # PORTFOLIO GENERATION
 # ========================================
 
-PORTFOLIO_GENERATOR_PROMPT = """You are an elite portfolio website generator specializing in clean, professional developer portfolios inspired by Stripe's design. Generate a complete, responsive, single-page HTML portfolio with inline CSS.
+PORTFOLIO_GENERATOR_PROMPT = """You are an elite portfolio website generator specializing in modern, vibrant, professional developer portfolios. Generate a complete, responsive, single-page HTML portfolio with inline CSS.
 
-DESIGN AESTHETIC (Stripe-inspired):
-- Clean white/light backgrounds with subtle depth
-- Professional color palette: Stripe Purple (#635BFF), Navy (#0A2540), Slate (#425466)
+DESIGN AESTHETIC (Modern & Colorful):
+- Gradient hero section with animated floating elements (purple gradient: #667eea to #764ba2)
+- Colorful gradient skill badges (3 different color schemes rotating)
+- Cards with gradient left borders and hover effects
+- Alternating section backgrounds for visual interest
+- Beautiful typography with gradient underlines on headings
 - Inter font (Google Fonts) for modern typography
-- Generous whitespace and breathing room
-- Soft shadows for depth
-- Subtle hover animations
+- Generous whitespace and professional spacing
+- Smooth animations and transitions
+- Dark gradient footer
 - Mobile-responsive design
+
+This design balances PROFESSIONALISM with VISUAL APPEAL - colorful but not childish, modern but not overwhelming.
 
 LAYOUT STRUCTURE:
 1. **Hero Section** (full-viewport, centered):
@@ -177,10 +182,14 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
         --white-bg: #FFFFFF;
         --light-bg: #F6F9FC;
         --stripe-purple: #635BFF;
+        --purple-light: #7C66FF;
         --navy: #0A2540;
         --slate: #425466;
         --light-gray: #8898AA;
         --border: rgba(0, 0, 0, 0.08);
+        --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     }
 
     html {
@@ -190,7 +199,7 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
     body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         color: var(--slate);
-        background: var(--white-bg);
+        background: #fafbfc;
         line-height: 1.6;
     }
 
@@ -219,6 +228,21 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
         font-size: 36px;
         margin-bottom: 48px;
         text-align: center;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 2px;
     }
 
     h3 {
@@ -239,21 +263,22 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
 
     .btn {
         display: inline-block;
-        background: var(--stripe-purple);
-        color: white;
-        padding: 12px 32px;
-        border-radius: 6px;
+        background: white;
+        color: #667eea;
+        padding: 14px 36px;
+        border-radius: 30px;
         font-weight: 600;
         text-decoration: none;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 4px rgba(99, 91, 255, 0.3);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border: 2px solid white;
     }
 
     .btn:hover {
-        background: #5851EA;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(99, 91, 255, 0.4);
-        color: white;
+        background: rgba(255, 255, 255, 0.9);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        color: #667eea;
     }
 
     .hero {
@@ -262,28 +287,89 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
         align-items: center;
         justify-content: center;
         text-align: center;
-        background: linear-gradient(180deg, var(--light-bg) 0%, var(--white-bg) 100%);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+        color: white;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        top: -200px;
+        right: -200px;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        bottom: -150px;
+        left: -150px;
+        animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(10deg); }
+    }
+
+    .hero .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero h1 {
+        color: white;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .hero p {
         font-size: 20px;
-        color: var(--slate);
+        color: rgba(255,255,255,0.95);
         margin-bottom: 32px;
     }
 
     .card {
         background: white;
         border: 1px solid var(--border);
+        border-left: 4px solid #667eea;
         border-radius: 12px;
         padding: 32px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
         margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        transition: width 0.3s ease;
     }
 
     .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px rgba(102, 126, 234, 0.15);
+        border-left-color: #764ba2;
+    }
+
+    .card:hover::before {
+        width: 6px;
     }
 
     .card-date {
@@ -315,19 +401,28 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
     }
 
     .skill-badge {
-        background: var(--light-bg);
-        border: 1px solid var(--border);
-        padding: 8px 16px;
-        border-radius: 20px;
-        color: var(--navy);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
         font-weight: 500;
         font-size: 14px;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
     }
 
     .skill-badge:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .skill-badge:nth-child(3n+1) {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .skill-badge:nth-child(3n+2) {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     }
 
     .tech-list {
@@ -336,11 +431,23 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
         margin-top: 12px;
     }
 
+    section:nth-child(even) {
+        background: #f8f9fa;
+    }
+
+    #skills {
+        background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    }
+
     footer {
         text-align: center;
         padding: 48px 0;
-        background: var(--light-bg);
-        color: var(--slate);
+        background: linear-gradient(135deg, #0A2540 0%, #1a3a5c 100%);
+        color: white;
+    }
+
+    footer a {
+        color: #4facfe;
     }
 
     @media (max-width: 768px) {
