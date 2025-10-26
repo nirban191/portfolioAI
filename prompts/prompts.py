@@ -100,77 +100,84 @@ Return ONLY valid JSON."""
 # PORTFOLIO GENERATION
 # ========================================
 
-PORTFOLIO_GENERATOR_PROMPT = """You are an elite portfolio website generator specializing in modern, vibrant, professional developer portfolios. Generate a complete, responsive, single-page HTML portfolio with inline CSS.
+PORTFOLIO_GENERATOR_PROMPT = """You are an ELITE portfolio website generator specializing in VISUALLY STUNNING, modern, award-winning developer portfolios with cinematic aesthetics. Generate a complete, responsive, single-page HTML portfolio with inline CSS that will WOW viewers.
 
-DESIGN AESTHETIC (Modern & Colorful):
-- Gradient hero section with animated floating elements (purple gradient: #667eea to #764ba2)
-- Colorful gradient skill badges (3 different color schemes rotating)
-- Cards with gradient left borders and hover effects
-- Alternating section backgrounds for visual interest
-- Beautiful typography with gradient underlines on headings
-- Inter font (Google Fonts) for modern typography
-- Generous whitespace and professional spacing
-- Smooth animations and transitions
-- Dark gradient footer
-- Mobile-responsive design
+DESIGN AESTHETIC (Ultra-Modern & Visually Stunning):
+- **HERO SECTION**: Multi-layer gradient mesh with animated gradient orbs, dynamic glow effects, and cinematic entrance
+- **3D CARD EFFECTS**: Cards with depth, perspective transforms, layered shadows, and magnetic hover effects
+- **SOPHISTICATED GRADIENTS**: Multi-stop gradients, radial gradients, and mesh gradients throughout
+- **SKILL BADGES**: 3D pill badges with glossy effects, multi-color gradients, and hover scale animations
+- **ANIMATED UNDERLINES**: Gradient underlines with shimmer effects on section headings
+- **MODERN TYPOGRAPHY**: Inter font with letter-spacing, gradient text effects on hero
+- **LAYERED SHADOWS**: Multiple shadow layers for depth and realism
+- **SMOOTH MICRO-INTERACTIONS**: Buttery smooth transitions on every element
+- **DECORATIVE ELEMENTS**: Floating orbs, gradient meshes, subtle patterns
+- **VIBRANT COLOR PALETTE**: Bold gradients (purple, pink, cyan, orange) while maintaining professionalism
+- **DARK GRADIENT FOOTER**: Sophisticated multi-stop gradient footer
+- **MOBILE-RESPONSIVE**: Perfect on all devices
 
-This design balances PROFESSIONALISM with VISUAL APPEAL - colorful but not childish, modern but not overwhelming.
+This design is VISUALLY STUNNING and PROFESSIONAL - designed to impress and stand out while maintaining credibility.
 
 LAYOUT STRUCTURE:
-1. **Hero Section** (full-viewport, centered):
-   - Large bold name (56px desktop, 40px mobile) in Navy (#0A2540)
-   - Clean, professional styling with ample whitespace
-   - Subtitle in Slate (#425466)
-   - Simple CTA button with Stripe Purple background
-   - Optional subtle gradient overlay in background (very subtle)
-   - Modern, clean, trustworthy
+1. **Hero Section** (full-viewport, cinematic):
+   - STUNNING gradient mesh background with animated floating orbs
+   - Large bold name (64px desktop, 44px mobile) in WHITE with text shadow and glow
+   - Gradient text effect on name (optional)
+   - Subtitle with modern typography and letter-spacing
+   - Glossy CTA button with glow effect and 3D appearance
+   - Multiple animated gradient orbs floating in background
+   - Smooth entrance animations
 
 2. **About Section**:
    - 2-3 sentence professional summary
-   - Derive from work history and skills
-   - Section heading in Navy with optional purple accent underline
-   - Clean paragraph styling with generous line-height
+   - Large, readable text with beautiful typography
+   - Section heading with animated gradient underline
+   - Subtle background pattern or gradient
 
-3. **Work Experience Timeline**:
-   - Each job in a white card with soft shadow
-   - Shadow: 0 4px 6px rgba(0, 0, 0, 0.07)
-   - Company name and title as heading (Navy)
-   - Date range in Slate color
-   - Bullet points for achievements
-   - Hover effect: slight lift with increased shadow (subtle)
-   - Border radius: 12px
+3. **Work Experience Cards**:
+   - 3D cards with layered shadows (elevation effect)
+   - Gradient left border that expands on hover
+   - Hover: lift effect with perspective transform
+   - Company name and title with icon decorations
+   - Date range with subtle styling
+   - Bullet points with custom gradient markers
+   - Smooth hover state with scale and shadow
 
-4. **Projects Showcase** (2-column grid):
-   - Grid layout (2 columns desktop, 1 mobile)
-   - Each project card with soft shadow
-   - Project name in bold Navy
-   - Tech stack as clean pill badges (light gray background)
-   - Links in Stripe Purple
-   - Hover: slight translateY(-4px) + shadow increase (subtle)
+4. **Projects Showcase** (responsive grid):
+   - Grid layout with stunning project cards
+   - Each card has depth with multiple shadow layers
+   - Project name in bold with gradient on hover
+   - Gradient overlay on hover
+   - Tech stack as colorful gradient pills
+   - Links with underline animations
+   - Image placeholders with gradient backgrounds
+   - Hover: dramatic lift with glow effect
 
 5. **Skills Section**:
-   - Grouped if many skills (Frontend, Backend, Tools)
-   - Clean pill badges with light backgrounds (#F6F9FC)
-   - Border: 1px solid rgba(0, 0, 0, 0.08)
-   - Minimal hover effect (slight scale or color change)
-   - Professional, organized layout
+   - Eye-catching gradient background
+   - 3D glossy skill badges with multiple gradient options
+   - Hover: bounce animation with scale and glow
+   - Rotating gradient colors (purple, pink, cyan, orange)
+   - Professional yet visually impressive
+   - Organized in flowing layout
 
 6. **Education Section**:
-   - Clean card layout
-   - Degree, institution, year
-   - Soft shadows and generous padding
-   - Minimal, professional design
+   - Elegant cards with gradient accents
+   - Degree, institution, year with icons
+   - Sophisticated shadows and hover effects
+   - Clean, impressive design
 
 7. **Contact/Footer**:
-   - Social/contact links in Stripe Purple
-   - "Built with PortfolioAI" credit
-   - Clean, simple styling
+   - Multi-stop gradient background (dark and sophisticated)
+   - Social links with hover glow effects
+   - "Built with PortfolioAI" credit with gradient text
+   - Modern, polished styling
 
 COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
 
 ```html
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
     * {
         margin: 0;
@@ -179,17 +186,14 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
     }
 
     :root {
-        --white-bg: #FFFFFF;
-        --light-bg: #F6F9FC;
-        --stripe-purple: #635BFF;
-        --purple-light: #7C66FF;
         --navy: #0A2540;
         --slate: #425466;
         --light-gray: #8898AA;
-        --border: rgba(0, 0, 0, 0.08);
-        --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-pink: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --gradient-cyan: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --gradient-orange: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     }
 
     html {
@@ -200,17 +204,19 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         color: var(--slate);
         background: #fafbfc;
-        line-height: 1.6;
+        line-height: 1.7;
+        overflow-x: hidden;
     }
 
     .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 24px;
+        padding: 0 32px;
     }
 
     section {
-        padding: 80px 0;
+        padding: 100px 0;
+        position: relative;
     }
 
     h1, h2, h3 {
@@ -220,74 +226,98 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
     }
 
     h1 {
-        font-size: 56px;
-        margin-bottom: 16px;
+        font-size: 64px;
+        margin-bottom: 20px;
+        font-weight: 800;
+        letter-spacing: -1px;
     }
 
     h2 {
-        font-size: 36px;
-        margin-bottom: 48px;
+        font-size: 42px;
+        margin-bottom: 60px;
         text-align: center;
         position: relative;
         display: inline-block;
         width: 100%;
+        font-weight: 800;
     }
 
     h2::after {
         content: '';
         position: absolute;
-        bottom: -8px;
+        bottom: -12px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, #667eea, #764ba2);
-        border-radius: 2px;
+        width: 100px;
+        height: 5px;
+        background: var(--gradient-purple);
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
     }
 
     h3 {
-        font-size: 20px;
-        margin-bottom: 8px;
+        font-size: 22px;
+        margin-bottom: 10px;
+        font-weight: 700;
     }
 
     a {
-        color: var(--stripe-purple);
+        color: #667eea;
         text-decoration: none;
-        font-weight: 500;
-        transition: color 0.2s ease;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
     }
 
     a:hover {
-        color: #5851EA;
+        color: #764ba2;
     }
 
     .btn {
         display: inline-block;
         background: white;
         color: #667eea;
-        padding: 14px 36px;
-        border-radius: 30px;
-        font-weight: 600;
+        padding: 16px 42px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 16px;
         text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15);
         border: 2px solid white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .btn:hover::before {
+        left: 100%;
     }
 
     .btn:hover {
-        background: rgba(255, 255, 255, 0.9);
-        transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        background: rgba(255, 255, 255, 0.95);
+        transform: translateY(-4px) scale(1.08);
+        box-shadow: 0 12px 32px rgba(255, 255, 255, 0.4), 0 8px 20px rgba(0, 0, 0, 0.2);
         color: #667eea;
     }
 
     .hero {
-        min-height: 90vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--gradient-hero);
         position: relative;
         overflow: hidden;
         color: white;
@@ -296,57 +326,77 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
     .hero::before {
         content: '';
         position: absolute;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
         border-radius: 50%;
-        top: -200px;
-        right: -200px;
-        animation: float 6s ease-in-out infinite;
+        top: -250px;
+        right: -250px;
+        animation: float 8s ease-in-out infinite;
+        filter: blur(40px);
     }
 
     .hero::after {
         content: '';
         position: absolute;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
         border-radius: 50%;
-        bottom: -150px;
-        left: -150px;
-        animation: float 8s ease-in-out infinite reverse;
+        bottom: -200px;
+        left: -200px;
+        animation: float 10s ease-in-out infinite reverse;
+        filter: blur(40px);
     }
 
     @keyframes float {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        50% { transform: translateY(-20px) rotate(10deg); }
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        33% { transform: translate(30px, -30px) rotate(120deg); }
+        66% { transform: translate(-20px, 20px) rotate(240deg); }
     }
 
     .hero .container {
         position: relative;
-        z-index: 1;
+        z-index: 2;
     }
 
     .hero h1 {
         color: white;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-shadow: 0 4px 20px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.15);
+        margin-bottom: 24px;
+        animation: fadeInUp 0.8s ease-out;
     }
 
     .hero p {
-        font-size: 20px;
+        font-size: 24px;
         color: rgba(255,255,255,0.95);
-        margin-bottom: 32px;
+        margin-bottom: 40px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .card {
         background: white;
-        border: 1px solid var(--border);
-        border-left: 4px solid #667eea;
-        border-radius: 12px;
-        padding: 32px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-        transition: all 0.3s ease;
-        margin-bottom: 24px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-left: 5px solid #667eea;
+        border-radius: 20px;
+        padding: 36px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        margin-bottom: 28px;
         position: relative;
         overflow: hidden;
     }
@@ -356,139 +406,250 @@ COMPLETE CSS TEMPLATE - USE THIS EXACT STRUCTURE:
         position: absolute;
         top: 0;
         left: 0;
-        width: 4px;
+        width: 5px;
         height: 100%;
-        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-        transition: width 0.3s ease;
+        background: var(--gradient-purple);
+        transition: all 0.4s ease;
+        box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+    }
+
+    .card::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(102, 126, 234, 0.03) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
     }
 
     .card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 24px rgba(102, 126, 234, 0.15);
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2), 0 10px 25px rgba(0, 0, 0, 0.1);
         border-left-color: #764ba2;
     }
 
     .card:hover::before {
-        width: 6px;
+        width: 100%;
+        opacity: 0.05;
+    }
+
+    .card:hover::after {
+        opacity: 1;
     }
 
     .card-date {
         color: var(--light-gray);
         font-size: 14px;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
+        font-weight: 600;
     }
 
     .card ul {
-        margin: 16px 0;
-        padding-left: 20px;
+        margin: 18px 0;
+        padding-left: 24px;
     }
 
     .card li {
-        margin: 8px 0;
+        margin: 10px 0;
+        line-height: 1.8;
     }
 
     .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
     }
 
     .skills-grid {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 16px;
         justify-content: center;
+        max-width: 900px;
+        margin: 0 auto;
     }
 
     .skill-badge {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--gradient-purple);
         color: white;
         border: none;
-        padding: 10px 20px;
-        border-radius: 25px;
-        font-weight: 500;
-        font-size: 14px;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        padding: 12px 26px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 15px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .skill-badge::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .skill-badge:hover::before {
+        opacity: 1;
     }
 
     .skill-badge:hover {
-        transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
     }
 
-    .skill-badge:nth-child(3n+1) {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    .skill-badge:nth-child(4n+1) {
+        background: var(--gradient-pink);
+        box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
     }
 
-    .skill-badge:nth-child(3n+2) {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    .skill-badge:nth-child(4n+1):hover {
+        box-shadow: 0 8px 25px rgba(240, 147, 251, 0.5);
+    }
+
+    .skill-badge:nth-child(4n+2) {
+        background: var(--gradient-cyan);
+        box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+    }
+
+    .skill-badge:nth-child(4n+2):hover {
+        box-shadow: 0 8px 25px rgba(79, 172, 254, 0.5);
+    }
+
+    .skill-badge:nth-child(4n+3) {
+        background: var(--gradient-orange);
+        box-shadow: 0 4px 15px rgba(250, 112, 154, 0.4);
+    }
+
+    .skill-badge:nth-child(4n+3):hover {
+        box-shadow: 0 8px 25px rgba(250, 112, 154, 0.5);
     }
 
     .tech-list {
         color: var(--light-gray);
         font-size: 14px;
-        margin-top: 12px;
+        margin-top: 14px;
+        font-weight: 500;
     }
 
     section:nth-child(even) {
-        background: #f8f9fa;
+        background: linear-gradient(180deg, #fafbfc 0%, #f5f7fa 100%);
     }
 
     #skills {
-        background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 50%, rgba(240, 147, 251, 0.08) 100%);
+        position: relative;
+    }
+
+    #skills::before {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        top: -150px;
+        right: -150px;
+        filter: blur(60px);
     }
 
     footer {
         text-align: center;
-        padding: 48px 0;
-        background: linear-gradient(135deg, #0A2540 0%, #1a3a5c 100%);
+        padding: 60px 0;
+        background: linear-gradient(135deg, #0A2540 0%, #1a3a5c 50%, #2d4a6c 100%);
         color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    footer::before {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        bottom: -250px;
+        left: 50%;
+        transform: translateX(-50%);
+        filter: blur(80px);
     }
 
     footer a {
         color: #4facfe;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+        color: #00f2fe;
+        text-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
+    }
+
+    footer p {
+        position: relative;
+        z-index: 1;
     }
 
     @media (max-width: 768px) {
-        h1 { font-size: 40px; }
-        h2 { font-size: 28px; }
-        section { padding: 48px 0; }
-        .card { padding: 24px; }
+        h1 { font-size: 44px; }
+        h2 { font-size: 32px; }
+        section { padding: 60px 0; }
+        .card { padding: 28px; }
         .projects-grid { grid-template-columns: 1fr; }
+        .container { padding: 0 24px; }
+        .hero p { font-size: 20px; }
     }
 </style>
 ```
 
 ADVANCED FEATURES TO INCLUDE:
-1. Smooth scroll behavior (scroll-behavior: smooth)
-2. Subtle background color transitions between sections
-3. Clean section headings in Navy with optional subtle purple accent
-4. Soft shadow depth on cards
-5. Project cards with minimal lift effect
-6. Skill badges with light backgrounds
-7. Generous whitespace throughout
-8. Professional, trustworthy feel
-9. Subtle, purposeful interactions
+1. **Smooth scroll behavior** - Buttery smooth scrolling with scroll-behavior: smooth
+2. **Layered shadows** - Multiple shadow layers for depth (0 10px 30px, 0 4px 10px, etc.)
+3. **3D hover effects** - Card transforms with translateY(-10px) scale(1.02) and glow
+4. **Animated gradient underlines** - Section headings with glowing gradient underlines
+5. **Floating orbs** - Animated gradient orbs in hero with blur(40px) and complex animations
+6. **Entrance animations** - fadeInUp animations for hero text with staggered delays
+7. **Glossy skill badges** - 4 rotating gradient colors with inner glow effects
+8. **Shimmer button effect** - CTA button with sliding shine overlay on hover
+9. **Radial gradient overlays** - Subtle gradient overlays on hover states
+10. **Multi-stop gradients** - Sophisticated 3-stop gradients throughout
+11. **Filter effects** - blur(40px-80px) on decorative elements for soft glow
+12. **Cubic-bezier easing** - cubic-bezier(0.175, 0.885, 0.32, 1.275) for bouncy animations
 
 CRITICAL STYLING RULES:
-- ALL section headings (h2, h3) in Navy (#0A2540) with font-weight 600-700
-- Hero name in Navy, 56px desktop, 40px mobile
-- Cards with white background and soft shadows (0 4px 6px rgba(0, 0, 0, 0.07))
-- Skill badges with light gray backgrounds (#F6F9FC)
-- Background MUST be white/light (#FFFFFF, #F6F9FC)
-- Links in Stripe Purple (#635BFF)
-- Use soft shadows for depth (no gradient glows)
-- Hover effects subtle: slight lift + shadow increase
-- Generous padding and whitespace
+- **HERO**: Full viewport height, multi-stop gradient background, white text with shadows
+- **HERO NAME**: 64px desktop, 44px mobile, font-weight 800, letter-spacing -1px, white with glow
+- **SECTION HEADINGS**: 42px, font-weight 800, Navy color, gradient underline with glow shadow
+- **CARDS**: White background, 5px gradient left border, border-radius 20px, layered shadows
+- **CARD HOVER**: Transform translateY(-10px) scale(1.02), dramatic shadow increase with color
+- **SKILL BADGES**: 4 rotating gradients (purple, pink, cyan, orange), glossy with inner highlight
+- **BUTTON**: White with purple text, shimmer overlay, transform scale(1.08) on hover with glow
+- **SHADOWS**: Layered shadows everywhere - cards: 0 10px 30px + 0 4px 10px combined
+- **TRANSITIONS**: 0.4s cubic-bezier for bouncy feel, 0.3s ease for subtle interactions
+- **SPACING**: 100px section padding, 36px card padding, generous whitespace
+- **GRADIENTS**: Use CSS variables for consistency (--gradient-purple, --gradient-pink, etc.)
 
 RESPONSIVE DESIGN:
 @media (max-width: 768px):
-- Hero h1: 56px → 40px
-- Grid: 2 columns → 1 column
-- Padding: 32px → 20px
-- All sections stack vertically
-- Maintain clean, professional appearance
+- Hero h1: 64px → 44px (maintain dramatic size)
+- Hero p: 24px → 20px
+- Section padding: 100px → 60px
+- Card padding: 36px → 28px
+- Container padding: 32px → 24px
+- Projects grid: Auto-fit → 1 column
+- All animations and effects remain smooth
+- Maintain all visual effects and gradients
+- Keep hover states impressive on mobile
 
 HTML STRUCTURE TEMPLATE - FOLLOW THIS EXACT PATTERN:
 
@@ -603,12 +764,16 @@ CRITICAL INSTRUCTIONS:
 8. Test that colors use CSS variables (var(--navy), var(--stripe-purple), etc.)
 
 QUALITY STANDARDS:
-✅ Clean, professional Stripe-inspired design
-✅ Fully responsive (mobile and desktop)
-✅ Proper spacing and typography
-✅ Working hover effects
-✅ No layout bugs
-✅ Production-ready code
+✅ **VISUALLY STUNNING** - Cinematic hero, 3D effects, impressive animations
+✅ **PROFESSIONAL** - Maintains credibility with sophisticated design
+✅ **LAYERED DEPTH** - Multiple shadow layers, gradient overlays, blur effects
+✅ **SMOOTH ANIMATIONS** - Cubic-bezier easing, fadeInUp, floating orbs
+✅ **4-COLOR GRADIENT SYSTEM** - Purple, pink, cyan, orange rotating on badges
+✅ **RESPONSIVE** - Perfect on all devices with maintained effects
+✅ **PROPER TYPOGRAPHY** - Inter font, proper weights (400-800), letter-spacing
+✅ **WORKING HOVER EFFECTS** - Dramatic transforms, glows, and scale effects
+✅ **NO PERFORMANCE ISSUES** - No backdrop-filter, optimized animations
+✅ **PRODUCTION-READY** - Valid CSS, proper selectors, no syntax errors
 
 Generate the complete HTML portfolio now using the profile data provided below:"""
 
