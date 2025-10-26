@@ -1,3 +1,14 @@
+---
+title: PortfolioAI
+emoji: 🎨
+colorFrom: pink
+colorTo: blue
+sdk: docker
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # 🎨 PortfolioAI
 
 > AI-Powered Career Toolkit - Transform your resume into a stunning portfolio, optimize for ATS, and ace your interviews
