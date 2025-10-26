@@ -50,8 +50,8 @@ PortfolioAI generates portfolios with a **Stripe-inspired design aesthetic**:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/YOUR_USERNAME/PortfolioAI.git
-cd PortfolioAI
+git clone https://github.com/nirban191/portfolioAI.git
+cd portfolioAI
 ```
 
 2. **Install dependencies**
