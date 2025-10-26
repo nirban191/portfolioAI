@@ -75,9 +75,9 @@ h3 {
 
 /* Glass/card style with gradient borders */
 .glass-card {
-    background: rgba(20, 20, 25, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(20, 20, 25, 0.95);
+    /* backdrop-filter: blur(20px); - REMOVED for iframe performance */
+    /* -webkit-backdrop-filter: blur(20px); - REMOVED for iframe performance */
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 28px;
@@ -85,7 +85,6 @@ h3 {
     margin-bottom: 20px;
     transition: all 0.3s ease;
     position: relative;
-    will-change: transform, box-shadow;
 }
 
 .glass-card::before {
@@ -94,12 +93,14 @@ h3 {
     inset: 0;
     border-radius: 20px;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(255, 0, 128, 0.5), rgba(121, 40, 202, 0.5), rgba(0, 112, 243, 0.5));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(121, 40, 202, 0.3), rgba(0, 112, 243, 0.3));
+    /* Removed complex mask compositing for iframe performance */
+    /* -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); */
+    /* -webkit-mask-composite: xor; */
+    /* mask-composite: exclude; */
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .glass-card:hover {
@@ -421,8 +422,8 @@ h3 {
     color: #ffffff;
 }
 
-/* Animated gradient glow */
-@keyframes gradientGlow {
+/* Animated gradient glow - DISABLED for iframe performance */
+/* @keyframes gradientGlow {
     0%, 100% {
         box-shadow: 0 0 20px rgba(255, 0, 128, 0.4), 0 0 40px rgba(121, 40, 202, 0.2);
     }
@@ -433,10 +434,10 @@ h3 {
 
 .glow-animation {
     animation: gradientGlow 2s ease-in-out infinite;
-}
+} */
 
-/* Loading animation with gradient */
-@keyframes pulse {
+/* Loading animation with gradient - DISABLED for iframe performance */
+/* @keyframes pulse {
     0%, 100% {
         opacity: 1;
         transform: scale(1);
@@ -450,10 +451,10 @@ h3 {
 
 .loading {
     animation: pulse 2s infinite;
-}
+} */
 
-/* Shimmer effect with vibrant gradient */
-@keyframes shimmer {
+/* Shimmer effect with vibrant gradient - DISABLED for iframe performance */
+/* @keyframes shimmer {
     0% {
         background-position: -1000px 0;
     }
@@ -473,7 +474,7 @@ h3 {
     );
     background-size: 1000px 100%;
     animation: shimmer 2s infinite;
-}
+} */
 
 /* Hero section with gradient background */
 .hero {
@@ -500,7 +501,7 @@ h3 {
     border-radius: 50%;
     filter: blur(80px);
     z-index: 0;
-    animation: pulse 4s ease-in-out infinite;
+    /* animation: pulse 4s ease-in-out infinite; - DISABLED for iframe performance */
 }
 
 .hero h1 {
