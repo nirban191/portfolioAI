@@ -1,116 +1,219 @@
----
-title: PortfolioAI
-emoji: 🎨
-colorFrom: pink
-colorTo: blue
-sdk: docker
-pinned: false
-license: mit
----
+# 🎨 PortfolioAI
 
-# PortfolioAI - Your AI-Powered Career Companion
+> AI-Powered Career Toolkit - Transform your resume into a stunning portfolio, optimize for ATS, and ace your interviews
 
-Transform your career journey with AI-powered tools for portfolio generation, resume optimization, interview prep, and career coaching—all in under 2 minutes.
+[![Deploy on Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/nirban191/PortfolioAI)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Streamlit](https://img.shields.io/badge/streamlit-1.31.0-FF4B4B.svg)](https://streamlit.io)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 🚀 Features
+## ✨ Features
 
-### Core Tools
-- **🎨 AI Portfolio Builder**: Upload resume → Get a stunning, responsive portfolio website
-- **📄 ATS Resume Generator**: Export optimized PDF + DOCX resumes that pass ATS systems
-- **✉️ Smart Cover Letters**: Generate tailored cover letters in 3 tones (formal, friendly, technical) with PDF/DOCX/TXT export
-- **🎯 Resume Optimizer**: ATS score analysis with keyword matching and recommendations
+### 🎯 Core Features
+- **📄 Smart Resume Parser** - Upload PDF/DOCX resumes or scrape LinkedIn profiles
+- **🌐 AI Portfolio Generator** - Generate beautiful, responsive portfolio websites (Stripe-inspired design)
+- **📝 Resume Builder** - Export optimized resumes in PDF/DOCX formats
+- **✍️ Cover Letter Generator** - Create tailored cover letters in multiple tones (Formal, Friendly, Technical)
 
-### AI-Powered Career Tools
-- **🎤 Mock Interview**: AI-generated interview questions tailored to your profile with instant feedback
-- **💬 AI Career Coach**: Interactive chatbot for career advice, salary tips, skill gaps, and job search strategy
-- **✨ Q&A Flow**: Build your portfolio from scratch without a resume
+### 🚀 Advanced Tools
+- **🎯 ATS Optimizer** - Analyze and optimize your resume for Applicant Tracking Systems
+- **🎤 Mock Interview Prep** - Practice with AI-generated interview questions and get feedback
+- **💬 AI Career Coach** - Get personalized career advice and guidance
+- **🔐 User Authentication** - Secure Supabase-powered auth and data storage
 
-### Data Input Options
-- Upload resume (PDF/DOCX)
-- LinkedIn profile import
-- Manual Q&A form
+## 🎨 Design Philosophy
 
-## 🤖 Powered by Advanced AI
+PortfolioAI generates portfolios with a **Stripe-inspired design aesthetic**:
+- Clean, professional, and minimal
+- Stripe Purple (#635BFF), Navy (#0A2540), and Slate (#425466) color palette
+- Soft shadows for depth
+- Generous whitespace
+- Trustworthy, corporate-friendly appearance
 
-Built with **Groq AI (Llama 3.3 70B)** for lightning-fast, intelligent responses. Choose from 3 AI models:
-- ⚡ Llama 3.1 8B (Fast)
-- 🧠 Llama 3.3 70B (Best Quality)
-- 🔀 Mixtral 8x7B (Balanced)
+## 🛠️ Tech Stack
 
-## 🔐 Setup & Configuration
+- **Frontend**: Streamlit (Python web framework)
+- **Backend**: Python 3.9+
+- **AI/LLM**: Groq (Llama 3.3 70B, Llama 3.1 8B, Mixtral 8x7B)
+- **Database**: Supabase (PostgreSQL + Auth)
+- **PDF Processing**: PyPDF2, pdfplumber, ReportLab
+- **Document Generation**: python-docx
+- **Web Scraping**: BeautifulSoup, Playwright
 
-This app requires the following secrets to be configured in your Hugging Face Space settings:
+## 📦 Installation
 
-### Required Secrets
+### Prerequisites
+- Python 3.9 or higher
+- pip package manager
 
-1. **GROQ_API_KEY**: Get your free API key from [Groq Cloud](https://console.groq.com)
-2. **SUPABASE_URL**: Your Supabase project URL
-3. **SUPABASE_KEY**: Your Supabase anon/public API key
+### Local Development
 
-### Setting up Secrets
-
-Go to your Space Settings → Repository secrets and add:
-
+1. **Clone the repository**
+```bash
+git clone https://github.com/YOUR_USERNAME/PortfolioAI.git
+cd PortfolioAI
 ```
+
+2. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+3. **Set up environment variables**
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your credentials:
+```env
 GROQ_API_KEY=your_groq_api_key_here
 SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_KEY=your_supabase_anon_key_here
+SUPABASE_ANON_KEY=your_supabase_anon_key_here
 ```
 
-## 📊 Tech Stack
+4. **Run the application**
+```bash
+streamlit run app.py
+```
 
-- **Frontend**: Streamlit
-- **AI/LLM**: Groq AI (Llama 3.3 70B, Mixtral 8x7B)
-- **Database**: Supabase (PostgreSQL)
-- **Auth**: Supabase Auth
-- **PDF Generation**: ReportLab
-- **DOCX Generation**: python-docx
+The app will be available at `http://localhost:8501`
 
-## 🎯 How to Use
+## 🔑 Getting API Keys
 
-1. **Choose Input Method**: Upload resume, paste LinkedIn profile, or use Q&A form
-2. **Generate Assets**: AI creates portfolio, resume, and more in < 2 minutes
-3. **Download Everything**: Get HTML portfolio, PDF/DOCX resumes, cover letters
-4. **Optimize & Practice**: Use AI tools for resume optimization and interview prep
-5. **Get Career Guidance**: Chat with AI career coach for personalized advice
+### Groq API Key
+1. Visit [console.groq.com](https://console.groq.com/keys)
+2. Sign up or log in
+3. Create a new API key
+4. Copy and paste into your `.env` file
 
-## 📝 Features in Detail
+### Supabase Credentials
+1. Visit [supabase.com](https://supabase.com/dashboard)
+2. Create a new project
+3. Go to Settings → API
+4. Copy the Project URL and anon/public key
+5. Paste into your `.env` file
 
-### Portfolio Generation
-- Stunning Framer-inspired design with gradients
-- Fully responsive HTML
-- Instant download
-- Subdomain preview
+## 🚀 Deployment
 
-### Resume Optimization
-- ATS scoring (0-100)
-- Keyword gap analysis
-- Section-specific recommendations
-- Strengths identification
+### Deploy to Hugging Face Spaces
 
-### Mock Interview
-- Technical, Behavioral, System Design, or Mixed questions
-- 3-10 questions per session
-- AI feedback on your answers
-- Key points and common mistakes highlighted
+1. **Fork/Clone this repository**
 
-### Career Coach Chatbot
-- Interactive conversation
-- Context-aware responses
-- 7 career topics + custom questions
-- Chat history export
+2. **Create a new Space** on [Hugging Face](https://huggingface.co/new-space)
+   - Choose "Docker" as the SDK
+   - Link your GitHub repository
+
+3. **Add secrets** in Space Settings → Repository secrets:
+   - `GROQ_API_KEY`
+   - `SUPABASE_URL`
+   - `SUPABASE_ANON_KEY`
+
+4. **Deploy!** - Your Space will automatically build and deploy
+
+## 📁 Project Structure
+
+```
+PortfolioAI/
+├── app.py                      # Main Streamlit application
+├── assets/
+│   └── style.css              # Custom CSS styling
+├── prompts/
+│   └── prompts.py             # AI system prompts
+├── utils/
+│   ├── groq_client.py         # Groq AI client wrapper
+│   ├── supabase_client.py     # Supabase client wrapper
+│   ├── resume_parser.py       # PDF/DOCX resume parser
+│   ├── linkedin_scraper.py    # LinkedIn profile scraper
+│   ├── portfolio_generator.py # Portfolio HTML generator
+│   ├── resume_generator.py    # Resume PDF/DOCX generator
+│   └── validators.py          # Input validation
+├── requirements.txt           # Python dependencies
+├── Dockerfile                 # Docker configuration for HF Spaces
+├── .env.example              # Environment variables template
+└── README.md                 # This file
+```
+
+## 🎯 Usage
+
+### 1. Upload Resume or LinkedIn Profile
+- **Option A**: Upload your existing resume (PDF/DOCX)
+- **Option B**: Paste your LinkedIn profile URL
+- **Option C**: Fill out the guided Q&A form
+
+### 2. Generate Portfolio
+- AI analyzes your data and generates a professional portfolio
+- Choose from multiple AI models (8B fast, 70B best quality, Mixtral balanced)
+- Download as HTML file or deploy online
+
+### 3. Create Documents
+- **Resume**: Export in PDF or DOCX format
+- **Cover Letter**: Generate tailored letters for job applications
+
+### 4. Optimize & Prepare
+- **ATS Optimizer**: Get a score and improvement suggestions
+- **Mock Interview**: Practice with AI-generated questions
+- **Career Coach**: Get personalized career advice
+
+## 🤖 AI Models
+
+PortfolioAI supports multiple LLM models via Groq:
+
+| Model | Speed | Quality | Use Case |
+|-------|-------|---------|----------|
+| Llama 3.1 8B | ⚡⚡⚡ Fast | ⭐⭐⭐ Good | Quick tasks, iterations |
+| Llama 3.3 70B | ⚡ Slow | ⭐⭐⭐⭐⭐ Excellent | Best quality, final output |
+| Mixtral 8x7B | ⚡⚡ Medium | ⭐⭐⭐⭐ Very Good | Balanced performance |
 
 ## 🔒 Privacy & Security
 
-- Demo mode available (no signup required, data not saved)
-- User authentication for data persistence
-- Row-level security in Supabase
-- Environment variables for sensitive data
+- **Local Processing**: All data processing happens on your device or in your Supabase instance
+- **Secure Auth**: Supabase handles authentication securely
+- **No Data Retention**: AI providers (Groq) don't retain your data
+- **Environment Variables**: Sensitive keys stored in `.env` (never committed)
 
-## 📄 License
+## 🐛 Troubleshooting
 
-MIT License - feel free to fork and customize!
+### Common Issues
+
+**"Failed to initialize services"**
+- Make sure `.env` file exists with correct credentials
+- For HF Spaces: Add secrets in Settings → Repository secrets
+
+**Scroll stuttering/lag**
+- The app uses optimized CSS for smooth scrolling
+- Try disabling browser extensions
+- Use a modern browser (Chrome, Firefox, Safari, Edge)
+
+**Resume parsing errors**
+- Ensure PDF/DOCX is not password-protected
+- Try a different file format
+- Check that the file is a valid resume document
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-Built with Streamlit, Groq AI (Llama 3.3), and Supabase
+- Built with [Streamlit](https://streamlit.io)
+- Powered by [Groq](https://groq.com) AI
+- Backend by [Supabase](https://supabase.com)
+- Design inspired by [Stripe](https://stripe.com)
+
+## 📧 Contact
+
+For questions or support, please open an issue on GitHub.
+
+---
+
+**Made with ❤️ for the 100x Hackathon**
