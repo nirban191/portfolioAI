@@ -21,11 +21,8 @@ class SupabaseClient:
         if not url or not key:
             raise ValueError("Missing Supabase credentials. Check .env file.")
 
-        # Create client with explicit options for newer supabase-py version
-        self.client: Client = create_client(
-            supabase_url=url,
-            supabase_key=key
-        )
+        # Create client with simple parameters
+        self.client: Client = create_client(url, key)
         self.storage = self.client.storage
 
     # ========================================
