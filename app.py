@@ -17,6 +17,7 @@ from utils.resume_parser import get_resume_parser
 from utils.linkedin_scraper import get_linkedin_scraper
 from utils.portfolio_generator import get_portfolio_generator
 from utils.resume_generator import get_resume_generator
+from utils.cv_generator import get_cv_generator
 from utils.validators import FileUploadValidator
 from utils.groq_client import get_groq_client
 
@@ -67,6 +68,10 @@ if 'resume_pdf' not in st.session_state:
     st.session_state.resume_pdf = None
 if 'resume_docx' not in st.session_state:
     st.session_state.resume_docx = None
+if 'cv_pdf' not in st.session_state:
+    st.session_state.cv_pdf = None
+if 'cv_docx' not in st.session_state:
+    st.session_state.cv_docx = None
 if 'subdomain' not in st.session_state:
     st.session_state.subdomain = None
 # Authentication state
@@ -551,7 +556,18 @@ def generate_assets():
         if resume_result['success']:
             st.session_state.resume_pdf = resume_result['pdf_bytes']
             st.session_state.resume_docx = resume_result['docx_bytes']
-            progress_bar.progress(80)
+            progress_bar.progress(70)
+
+        # Step 2.5: Generate CV files
+        status_text.text("📋 Creating your comprehensive CV...")
+        progress_bar.progress(75)
+
+        cv_gen = get_cv_generator()
+        cv_result = cv_gen.generate_cv_files(profile_data)
+        if cv_result['success']:
+            st.session_state.cv_pdf = cv_result['pdf_bytes']
+            st.session_state.cv_docx = cv_result['docx_bytes']
+            progress_bar.progress(85)
 
         # Step 3: Save to database if user is logged in
         if st.session_state.user_id and not st.session_state.demo_mode:
@@ -1051,6 +1067,36 @@ def overview_tab():
                 )
             else:
                 st.button("⬇️ Download DOCX", disabled=True, use_container_width=True)
+
+        st.markdown("---")
+        st.markdown("### 📋 Your CV (Curriculum Vitae)")
+        st.caption("More comprehensive and detailed than a resume")
+
+        cv_col1, cv_col2 = st.columns(2)
+
+        with cv_col1:
+            if st.session_state.cv_pdf:
+                st.download_button(
+                    label="⬇️ Download CV PDF",
+                    data=st.session_state.cv_pdf,
+                    file_name="cv.pdf",
+                    mime="application/pdf",
+                    use_container_width=True
+                )
+            else:
+                st.button("⬇️ Download CV PDF", disabled=True, use_container_width=True)
+
+        with cv_col2:
+            if st.session_state.cv_docx:
+                st.download_button(
+                    label="⬇️ Download CV DOCX",
+                    data=st.session_state.cv_docx,
+                    file_name="cv.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    use_container_width=True
+                )
+            else:
+                st.button("⬇️ Download CV DOCX", disabled=True, use_container_width=True)
 
     with col2:
         st.markdown("### 📊 Quick Stats")
@@ -1735,10 +1781,20 @@ def qa_flow_page():
             else:
                 st.error(f"Failed to generate DOCX: {error_docx}")
 
+            progress_text.text("📋 Creating comprehensive CV...")
+            progress_bar.progress(85)
+
+            # Generate CV (more detailed than resume)
+            cv_gen = get_cv_generator()
+            cv_result = cv_gen.generate_cv_files(profile_data)
+            if cv_result['success']:
+                st.session_state.cv_pdf = cv_result['pdf_bytes']
+                st.session_state.cv_docx = cv_result['docx_bytes']
+
             # Save to database if logged in
             if st.session_state.user_id and not st.session_state.demo_mode:
                 progress_text.text("💾 Saving to your account...")
-                progress_bar.progress(90)
+                progress_bar.progress(95)
 
                 try:
                     supabase.client.table('user_portfolios').insert({
