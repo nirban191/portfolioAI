@@ -562,11 +562,17 @@ def generate_assets():
         status_text.text("📋 Creating your comprehensive CV...")
         progress_bar.progress(75)
 
-        cv_gen = get_cv_generator()
-        cv_result = cv_gen.generate_cv_files(profile_data)
-        if cv_result['success']:
-            st.session_state.cv_pdf = cv_result['pdf_bytes']
-            st.session_state.cv_docx = cv_result['docx_bytes']
+        try:
+            cv_gen = get_cv_generator()
+            cv_result = cv_gen.generate_cv_files(profile_data)
+            if cv_result['success']:
+                st.session_state.cv_pdf = cv_result['pdf_bytes']
+                st.session_state.cv_docx = cv_result['docx_bytes']
+            else:
+                st.warning(f"CV generation warning: {cv_result.get('error', 'Unknown error')}")
+            progress_bar.progress(85)
+        except Exception as e:
+            st.error(f"CV generation failed: {str(e)}")
             progress_bar.progress(85)
 
         # Step 3: Save to database if user is logged in
@@ -1075,7 +1081,7 @@ def overview_tab():
         cv_col1, cv_col2 = st.columns(2)
 
         with cv_col1:
-            if st.session_state.cv_pdf:
+            if st.session_state.cv_pdf and len(st.session_state.cv_pdf) > 0:
                 st.download_button(
                     label="⬇️ Download CV PDF",
                     data=st.session_state.cv_pdf,
@@ -1085,9 +1091,11 @@ def overview_tab():
                 )
             else:
                 st.button("⬇️ Download CV PDF", disabled=True, use_container_width=True)
+                if st.session_state.cv_pdf is not None and len(st.session_state.cv_pdf) == 0:
+                    st.caption("⚠️ CV PDF generation produced empty file")
 
         with cv_col2:
-            if st.session_state.cv_docx:
+            if st.session_state.cv_docx and len(st.session_state.cv_docx) > 0:
                 st.download_button(
                     label="⬇️ Download CV DOCX",
                     data=st.session_state.cv_docx,
@@ -1097,6 +1105,8 @@ def overview_tab():
                 )
             else:
                 st.button("⬇️ Download CV DOCX", disabled=True, use_container_width=True)
+                if st.session_state.cv_docx is not None and len(st.session_state.cv_docx) == 0:
+                    st.caption("⚠️ CV DOCX generation produced empty file")
 
     with col2:
         st.markdown("### 📊 Quick Stats")
@@ -1785,11 +1795,18 @@ def qa_flow_page():
             progress_bar.progress(85)
 
             # Generate CV (more detailed than resume)
-            cv_gen = get_cv_generator()
-            cv_result = cv_gen.generate_cv_files(profile_data)
-            if cv_result['success']:
-                st.session_state.cv_pdf = cv_result['pdf_bytes']
-                st.session_state.cv_docx = cv_result['docx_bytes']
+            try:
+                cv_gen = get_cv_generator()
+                cv_result = cv_gen.generate_cv_files(profile_data)
+                if cv_result['success']:
+                    st.session_state.cv_pdf = cv_result['pdf_bytes']
+                    st.session_state.cv_docx = cv_result['docx_bytes']
+                else:
+                    st.warning(f"CV generation warning: {cv_result.get('error', 'Unknown error')}")
+            except Exception as e:
+                st.error(f"CV generation failed: {str(e)}")
+
+            progress_bar.progress(90)
 
             # Save to database if logged in
             if st.session_state.user_id and not st.session_state.demo_mode:
