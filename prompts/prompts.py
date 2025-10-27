@@ -152,10 +152,12 @@ LAYOUT STRUCTURE:
    - Show real technologies used, not generic placeholders
 
 5. **Skills Section**:
-   - Group skills logically if there are many (Frontend, Backend, Tools, etc.)
-   - Display as colorful gradient pill badges (rotating 4 colors)
+   - **MUST organize skills by categories** with h3 headings for each category
+   - Categories examples: "DevOps & IaC", "Cloud Platforms", "Networking", "Monitoring & Security", "Scripting & Tools", "AI & Creative Tools"
+   - Each category gets its own h3 heading followed by a skills-grid div
+   - Display skills as colorful gradient pill badges (rotating 4 colors)
    - List actual skills from user's profile
-   - Professional organization with visual impact
+   - Professional organization with clear visual hierarchy
 
 6. **Education Section**:
    - List each degree/certification
@@ -712,10 +714,18 @@ HTML STRUCTURE TEMPLATE - FOLLOW THIS EXACT PATTERN:
     <section id="skills">
         <div class="container">
             <h2>Skills</h2>
+            <!-- Group skills by category with h3 headings -->
+            <h3>[Category Name 1]</h3>
             <div class="skills-grid">
-                <!-- For each skill -->
-                <span class="skill-badge">[Skill Name]</span>
+                <span class="skill-badge">[Skill 1]</span>
+                <span class="skill-badge">[Skill 2]</span>
             </div>
+            <h3>[Category Name 2]</h3>
+            <div class="skills-grid">
+                <span class="skill-badge">[Skill 3]</span>
+                <span class="skill-badge">[Skill 4]</span>
+            </div>
+            <!-- Repeat for each category -->
         </div>
     </section>
 
@@ -749,17 +759,21 @@ HTML STRUCTURE TEMPLATE - FOLLOW THIS EXACT PATTERN:
 </html>
 ```
 
-CRITICAL INSTRUCTIONS:
-1. **USE THE COMPLETE CSS** - Copy it exactly into the <style> tag, no modifications
-2. **WRITE REAL CONTENT** - Replace ALL [bracketed placeholders] with actual user data
-3. **PROFESSIONAL ABOUT SECTION** - Write a compelling 2-3 sentence summary from user's experience
-4. **DETAILED WORK HISTORY** - Include all jobs with 3-5 specific bullet points each
-5. **QUANTIFY ACHIEVEMENTS** - Use metrics where possible (e.g., "Improved speed by 40%")
-6. **ACCURATE TECH STACKS** - List real technologies from user's projects, not generic ones
-7. **PROPER LINKS** - Include mailto: for email, tel: for phone, full URLs for LinkedIn/GitHub
-8. **USE ACTION VERBS** - Led, Built, Developed, Implemented, Increased, Optimized, etc.
-9. **SEMANTIC HTML5** - Proper section tags, headings hierarchy, accessibility
-10. **RETURN ONLY HTML** - No markdown code blocks, no explanations, just pure HTML
+CRITICAL INSTRUCTIONS - FOLLOW EXACTLY:
+1. **USE THE COMPLETE CSS** - Copy the entire CSS template exactly into <style> tags
+2. **FOLLOW THE HTML TEMPLATE EXACTLY** - Use the structure shown above, do NOT create your own simplified version
+3. **INCLUDE ALL SECTIONS** - Hero, About, Work Experience, Projects, Skills (with categories), Education, Contact, Footer
+4. **WRITE REAL CONTENT** - Replace ALL [bracketed placeholders] with actual user data
+5. **PROFESSIONAL ABOUT SECTION** - Write a compelling 2-3 sentence summary from user's experience (REQUIRED)
+6. **CATEGORIZED SKILLS** - Organize skills with h3 category headings, then skill-badge spans in skills-grid divs
+7. **DETAILED WORK HISTORY** - Include all jobs with 3-5 specific bullet points each
+8. **COMPLETE EDUCATION SECTION** - Include ALL degrees/certifications as separate cards (REQUIRED)
+9. **QUANTIFY ACHIEVEMENTS** - Use metrics where possible (e.g., "Improved speed by 40%")
+10. **ACCURATE TECH STACKS** - List real technologies from user's projects, not generic ones
+11. **PROPER LINKS** - Include mailto: for email, tel: for phone, full URLs for LinkedIn/GitHub
+12. **USE ACTION VERBS** - Led, Built, Developed, Implemented, Increased, Optimized, etc.
+13. **SEMANTIC HTML5** - Proper section tags, headings hierarchy, accessibility
+14. **RETURN ONLY HTML** - No markdown code blocks, no explanations, just pure HTML starting with <!DOCTYPE html>
 
 QUALITY STANDARDS:
 ✅ **VISUALLY STUNNING** - Cinematic hero, 3D effects, impressive animations
