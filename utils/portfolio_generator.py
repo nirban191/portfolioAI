@@ -186,9 +186,9 @@ class PortfolioGenerator:
             response = self.groq_client.call_api(
                 system_prompt=PORTFOLIO_GENERATOR_PROMPT,
                 user_prompt=f"Generate a portfolio website for:\n\n{formatted_profile}",
-                model="8b",  # Fast model
+                model="70b",  # Need powerful model for complex CSS template
                 temperature=0.7,  # Some creativity for design
-                max_tokens=4096  # Need more tokens for full HTML
+                max_tokens=8000  # Need more tokens for full HTML with complete CSS
             )
 
             if not response.get("success"):
